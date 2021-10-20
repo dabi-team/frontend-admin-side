@@ -1,0 +1,31 @@
+$primary-color: #869dda;
+$primary2-color: rgb(70, 205, 207);
+$primary3-color: rgb(209,227,246);
+$secondary-color: rgb(252, 162, 255);
+$secondary2-color: rgb(163, 64, 150);
+$secondary3-color: rgb(255, 0, 140);
+$tertiary-color: rgb(255, 0, 0);
+$tertiary2-color: rgb(255, 60, 0);
+$tertiary3-color: rgb(255, 94, 0);
+
+$primary-text-color: rgb(0, 183, 255);
+$primary2-text-color: rgb(72, 70, 109);
+$primary3-text-color: rgb(61, 132, 168);
+$secondary-text-color: rgb(30, 255, 0);
+$secondary2-text-color: rgb(60, 255, 0);
+$secondary3-text-color: rgb(187, 255, 0);
+$tertiary-text-color: rgb(255, 251, 0);
+$tertiary2-text-color: rgb(255, 94, 0);
+$tertiary3-text-color: rgb(255, 94, 0);
+
+$white: #ffffff;
+$grey:#dbe7eb;
+$light-grey:#f1f1f1;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+*::-webkit-scrollbar {
+  display: none;
+}

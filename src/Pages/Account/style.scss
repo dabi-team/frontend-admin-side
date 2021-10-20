@@ -1,0 +1,16 @@
+@import "styles/config";
+
+.white-card-container{
+  padding: 3rem;
+  background-color: $white;
+  width: 90vw;
+  padding: 1rem;
+  margin: 6rem;
+  border-radius: 9px;
+  img{
+    position: absolute;
+    top:10%;
+    left: 40%; 
+    height: 18rem;
+  }
+}

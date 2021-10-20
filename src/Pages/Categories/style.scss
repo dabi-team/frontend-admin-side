@@ -1,0 +1,39 @@
+@import "styles/config";
+
+.nav{
+  position: sticky;
+  top: 0;
+  padding:1rem 2rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+    a{
+    color: $primary2-text-color;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    padding: 11px 20px;
+    text-decoration: none;
+    font-size: 20px;
+        :hover{
+        color: $secondary-color;
+        }
+        .active {
+        border-bottom: 3px solid $primary2-text-color;
+      }
+    }
+    .nav-links{
+      padding-top: 1rem;
+      font-size: 15px;
+    }
+    
+    .icon {
+    color: $primary2-text-color;
+    padding: 0px;
+    margin: 0px;
+    max-height: 1rem;
+    max-width: 1rem;
+    }
+}
+    .nav-container{
+      padding: 1rem 1rem;
+     }

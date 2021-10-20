@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "styles/shared";
+@import "styles/config";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $primary3-color;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"),
+    url(assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
+}
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
+@font-face {
+  font-family: "Playfair";
+  src: local("Playfair"),
+    url(assets/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf)
+      format("truetype");
+}
+.playfair {
+  font-family: "Playfair", sans-serif;
+}
+@font-face {
+  font-family: "Open_Sans";
+  src: local("Open_Sans"),
+    url(assets/fonts/Open_Sans_Condensed/OpenSansCondensed-Light.ttf)
+      format("truetype");
+}
+.open_sans {
+  font-family: "Open_Sans", sans-serif;
+  font-size: large;
+}
