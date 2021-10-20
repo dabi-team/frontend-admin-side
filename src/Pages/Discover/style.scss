@@ -39,7 +39,21 @@
      }
 
 .Discover-main{
+  margin: 3rem;
   width: 100vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
+
+.add-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 3rem;
+    button{
+    font-size: 25px;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    background-color: $primary-color;
+    color: $white;
+}}

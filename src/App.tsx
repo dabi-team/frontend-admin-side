@@ -9,6 +9,8 @@ import Cart from './Pages/Cart/home';
 import Account from './Pages/Account/home';
 import Product from './Pages/Product/Product';
 import Wishlist from './Pages/Wishlist/Wishlist';
+import AddItem from './Admin/addItem';
+import AddCategory from './Admin/addCategory';
 
 function App() {
   return (
@@ -37,6 +39,12 @@ function App() {
                   </Route>
                   <Route path='/Wishlist'>
                       <Wishlist/>
+                  </Route>
+                  <Route path='/AddItem'>
+                      <AddItem/>
+                  </Route>
+                  <Route path='/AddCategory'>
+                      <AddCategory/>
                   </Route>
               </Switch>
           </span> 

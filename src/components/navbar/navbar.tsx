@@ -17,7 +17,7 @@ const Navbar = () =>{
           </div>
           <div className="nav-links">
               <a>
-                  <Link className={(location.pathname === '/')? 'active':''} to="/">Discover</Link>
+                  <Link className={(location.pathname === '/')? 'active':''} to="/">Product</Link>
               </a>
               <a>
                   <Link className={(location.pathname === '/Categories')? 'active':''} to="/Categories">Categories</Link>
@@ -29,12 +29,12 @@ const Navbar = () =>{
           <div className="flex">
                   {signedin?
               <div className='flex flex-row'> 
-                        <Link to='/Cart' className='flex flex-row5' >
+                        {/* <Link to='/Cart' className='flex flex-row5' >
                             <BsCart3 className={(location.pathname === '/Cart')? ' icon pb-5 active':'icon pb-5'}/>
                         </Link>
                         <Link to='/Wishlist' className='flex flex-row5' >
                             <AiOutlineHeart className={(location.pathname === '/Wishlist')? ' icon pb-5 active':'icon pb-5'}/>
-                        </Link>
+                        </Link> */}
                     <a>
                         <Link to='/Account'>Account</Link>
                     </a>
