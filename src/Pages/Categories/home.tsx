@@ -31,6 +31,7 @@ const Page2 = () => {
         {products.map((product) => {
           return (
             <CategorieCard
+              image={product.image}
               name={product.title}
               description={product.description}
               categorie={product.title}

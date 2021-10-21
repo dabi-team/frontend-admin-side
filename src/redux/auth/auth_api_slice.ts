@@ -10,14 +10,15 @@ const usersState = user
   ? { auth: JSON.parse(user) }
   : {
       auth: {
-        jwt: "",
         user: {
-          _id: "",
-          email: "",
-          password: "",
-          name: "",
-          number: "",
+          _id: "617144ee3a3247f9524b5aae",
+          email: "haider.n@somaiya.edu",
+          password:
+            "$2b$12$zF.Uy8RE1rMzM2mH09pS0uj6vKsLTn6wTPKI8cJdgG3OU1cS4MMkO",
+          name: "haider",
+          number: "23411",
         },
+        jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzE0NGVlM2EzMjQ3Zjk1MjRiNWFhZSIsImlhdCI6MTYzNDgxMzE2NiwiZXhwIjoxNjM0ODk5NTY2fQ.9g7MFW3rIgiAwdZvKKUn7iwKWYAyT8psamHtQux-N08",
       },
     };
 const initialState: AuthState = {

@@ -42,9 +42,8 @@ const AddCategory = () => {
   ];
   const onSubmit = async (event: any) => {
     event.preventDefault();
-    const url = await upload();
-    console.log(url);
-    console.log(Cate);
+    await upload();
+
     dispatch(addCategory(Cate));
     history.push("/Categories");
   };
