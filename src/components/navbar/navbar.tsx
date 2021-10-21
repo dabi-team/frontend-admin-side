@@ -17,13 +17,13 @@ const Navbar = () =>{
           </div>
           <div className="nav-links">
               <a>
-                  <Link className={(location.pathname === '/')? 'active':''} to="/">Product</Link>
+                  <Link className={(location.pathname === '/')? 'active':''} to="/">Products</Link>
               </a>
               <a>
                   <Link className={(location.pathname === '/Categories')? 'active':''} to="/Categories">Categories</Link>
               </a>
               <a>
-                  <Link className={(location.pathname === '/Art')? 'active':''} to="/Art">Your Orders</Link>
+                  <Link className={(location.pathname === '/Art')? 'active':''} to="/Art">Analysis</Link>
               </a>
           </div>
           <div className="flex">
