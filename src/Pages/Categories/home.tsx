@@ -1,26 +1,48 @@
+import React, { useEffect } from "react";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import CategorieCard from "../../components/Categorie/CategorieCard";
+import { fetchAllCategory } from "../../redux/category/category_api_slice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import "./style.scss";
 
-import React from 'react'
-import { Link, useHistory, useLocation } from 'react-router-dom'
-import CategorieCard from '../../components/Categorie/CategorieCard';
-import './style.scss';
+const Page2 = () => {
+  const dispatch = useAppDispatch();
 
-const Page2 = () =>{
+  const products = useAppSelector((state) => state.category.category);
+  const user = useAppSelector((state) => state.auth.auth);
   const location = useLocation();
   const history = useHistory();
-  const name = 'Laptop';
-  const cat= 'Asus';
-  const description =' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit nemo velit nam? Aliquam optio voluptatem corrupti cupiditate error quas molestias dolor, commodi modi nihil, magni, doloribus voluptatum quae voluptatibus qui.'
-    return(
-      <div>
-        <div className='add-button'>
-        <button onClick={()=>{history.push('/AddCategory')}}>Add new categorie</button>
-        </div>
-        <div className="text-xl mx-20">Existing Categories:</div>
-      <div className='mx-12'>
-          <CategorieCard name={name} description={description} categorie={cat} clickAction={()=>{history.push('/')}}  />
+  useEffect(() => {
+    dispatch(fetchAllCategory());
+  }, []);
+  return (
+    <div>
+      <div className="add-button">
+        <button
+          onClick={() => {
+            history.push("/AddCategory");
+          }}
+        >
+          Add new categorie
+        </button>
       </div>
+      <div className="text-xl mx-20">Existing Categories:</div>
+      <div className="mx-12">
+        {products.map((product) => {
+          return (
+            <CategorieCard
+              name={product.title}
+              description={product.description}
+              categorie={product.title}
+              clickAction={() => {
+                history.push("/");
+              }}
+            />
+          );
+        })}
       </div>
-    )
-}
+    </div>
+  );
+};
 
 export default Page2;
