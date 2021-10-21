@@ -7,6 +7,11 @@ export interface ProductType{
         images: string[],
         quantity: number,
         }
+export interface CatType{
+        title: string,
+        description: string,
+        images: string[],
+        }
 
 export interface field{
     name: string,
@@ -14,3 +19,11 @@ export interface field{
     placeholder: string,
     type: string,
 }
+
+export type ImageUpload = {
+        currentFile?: File | undefined ,
+        previewImage?: string | undefined,
+        progress?: number,
+        message?: string,
+        imageInfos?: string[],
+    }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router';
-import { field, ProductType } from '../types/types';
+import { storage } from '../firebase';
+import { field, ImageUpload, ProductType } from '../types/types';
 
 
 const AddItem = () =>{
@@ -13,6 +14,14 @@ const AddItem = () =>{
         images: [],
         quantity: 0
     }
+    const imgini:ImageUpload = {
+        currentFile: undefined,
+        previewImage: undefined,
+        progress: 0,
+        message: '',
+        imageInfos: [],
+    }
+    const [image , setImage] = useState(imgini);
     const [Item, setItem] = useState(ini);
     const history = useHistory();
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,13 +35,38 @@ const AddItem = () =>{
         {name:'discont',statement:'Discount on product',placeholder:'discount',type:'number'},
         {name:'price',statement:'Price of product',placeholder:'price',type:'number'},
     ]
-    const onSubmit = (event:any) => {
+    const onSubmit = async (event:any) => {
         event.preventDefault();
+        await upload();
+        console.log(Item);
         history.push('/');
     };
+    const upload = async ()=>{
+     if(image.currentFile == undefined)
+       return;
+     await storage.ref(`/images/${image.currentFile.name}`).put(image.currentFile)
+     .then(snapshot => {
+       return snapshot.ref.getDownloadURL();   // Will return a promise with the download link
+   })
+   .then(downloadURL => {
+       setImage({...image , message:downloadURL});
+       setItem({...Item,images:[downloadURL]});
+      console.log(`Successfully uploaded file and got download link - ${downloadURL}`);
+      return downloadURL;
+   })
+   .catch(error => {
+      // Use to signal error if something goes wrong.
+      console.log(`Failed to upload file and get link - ${error}`);
+   });
+    }
+    const onFileChange  = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setImage( {...image , 
+                        currentFile: event?.target?.files?.[0],
+                        previewImage: URL.createObjectURL(event?.target?.files?.[0])});
+    };
   return(
-      <div className='login-box'>
-       <div className='white-card-container shadow-lg text-center'>
+      <div className=''>
+       <div className='white-card-cont shadow-lg text-center'> 
            <div className="p-15 mx-20">
                <div className="text-center text-3xl m-10">Fill in the details</div> 
             {allFields.map((onefield) => (
@@ -49,7 +83,17 @@ const AddItem = () =>{
                       />
                   </div>
                   ))}
-                  <button className='m-7' onClick={onSubmit}>Add Item</button>
+                  <div className='grid grid-flow-col grid-cols-3'>
+                    <div className="file-input">
+                        <input className="file" id="file" type="file" onChange={onFileChange} />
+                        <label htmlFor="file">Select file</label>
+                    </div>
+                    <div className='mx-8'>
+                         <img className="preview" src={image.previewImage} alt="" />
+                    </div>
+                </div>
+                  <button className=' bg-indigo-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-3xl m-5' onClick={onSubmit}>Add Item</button>
+                  <button className='bg-indigo-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-3xl m-5' onClick={upload}>Upload</button>
            </div>
        </div>
      </div>
