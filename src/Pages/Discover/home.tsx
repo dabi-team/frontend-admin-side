@@ -3,7 +3,10 @@ import { useHistory } from "react-router-dom";
 import Card from "../../components/card/Card";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { fetchAllProducts } from "../../redux/products/products_api_slice";
+import {
+  addDelete,
+  fetchAllProducts,
+} from "../../redux/products/products_api_slice";
 import "./style.scss";
 
 const Page1 = () => {
@@ -15,7 +18,9 @@ const Page1 = () => {
     dispatch(fetchAllProducts());
   }, [dispatch]);
   const history = useHistory();
-
+  const addToCartLis = (productId: string) => {
+    dispatch(addDelete(productId));
+  };
   return (
     <div>
       <div className="add-button">
@@ -34,8 +39,8 @@ const Page1 = () => {
               name={product.title ?? "dsda"}
               categorie={product.category ?? "dfa"}
               price={product.price}
-              // clickAction={() => addToCartLis(product._id)}
-              clickAction={() => {}}
+              clickAction={() => addToCartLis(product._id)}
+              // clickAction={() => {}}
               photoclick={() => {
                 history.push("/Product/" + product._id);
               }}
@@ -48,6 +53,3 @@ const Page1 = () => {
 };
 
 export default Page1;
-function addToCart(arg0: { userId: string; productId: string }): any {
-  throw new Error("Function not implemented.");
-}

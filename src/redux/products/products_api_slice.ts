@@ -31,6 +31,15 @@ export const addProduct = createAsyncThunk(
     return responce.data as any;
   }
 );
+export const addDelete = createAsyncThunk(
+  "product/delete",
+  async (cartInfo: string) => {
+    await api.delete("/product/delete/" + cartInfo);
+    const responce: any = await api.get("/product/getAll");
+
+    return responce.data as any;
+  }
+);
 // export const fetchProductById = createAsyncThunk(
 //   "product/fetchProductById",
 //   async (id: string) => {
@@ -52,6 +61,9 @@ const productSlice = createSlice({
       state.products = action.payload;
     });
     builder.addCase(addProduct.fulfilled, (state, action) => {
+      state.products = action.payload;
+    });
+    builder.addCase(addDelete.fulfilled, (state, action) => {
       state.products = action.payload;
     });
   },

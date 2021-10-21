@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import AddCategory from "../../Admin/addCategory";
 import { api } from "../api";
 import { Category } from "./category_api_model";
 
@@ -18,37 +19,25 @@ export const fetchAllCategory = createAsyncThunk(
     return responce.data as any;
   }
 );
+export const addCategory = createAsyncThunk(
+  "category/addCat",
+  async (cartInfo: any) => {
+    await api.post("/category/add", cartInfo);
+    const responce: any = await api.get("/category/getAll");
 
-// export const addToCategory = createAsyncThunk(
-//   "category/addToBuynow",
-//   async (cartInfo: CartInfo) => {
-//     await api.post("/category/add", {
-//       userId: cartInfo.userId,
-//       productId: cartInfo.productId,
-//       quantity: 1,
-//       status: false,
-//     });
-//     const responces: any = await api.get("/category/getAll/" + cartInfo.userId);
+    return responce.data as any;
+  }
+);
 
-//     return responces.data as any;
-//   }
-// );
-
-// export const deleteCategory = createAsyncThunk(
-//   "buy/delete",
-//   async (cartInfo: CartInfo) => {
-//     await api.delete("/category/remove/" + cartInfo.productId);
-//     const responces: any = await api.get("/category/getAll/" + cartInfo.userId);
-
-//     return responces.data as any;
-//   }
-// );
 const BuyNowSlice = createSlice({
-  name: "buy",
+  name: "category",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAllCategory.fulfilled, (state, action) => {
+      state.category = action.payload;
+    });
+    builder.addCase(addCategory.fulfilled, (state, action) => {
       state.category = action.payload;
     });
     // builder.addCase(addToCategory.fulfilled, (state, action) => {
